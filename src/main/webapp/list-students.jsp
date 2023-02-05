@@ -1,5 +1,5 @@
-<%@ page import="java.util.*, com.test.testjakarta.*" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 
@@ -16,9 +16,7 @@
 
 
 
-<%
-    List<Student> theStudents = (List<Student>) request.getAttribute("STUDENT_LIST");
-%>
+
 <body>
 
     <div id="wrapper">
@@ -37,16 +35,19 @@
                     <th>Email</th>
                 </tr>
 
-                <% for (Student tempStudent : theStudents) { %>
+
+                <c:forEach var="tempStudent" items="${STUDENT_LIST}">
 
                     <tr>
-                        <td> <%= tempStudent.getFirstName()%></td>
-                        <td> <%= tempStudent.getLastName()%></td>
-                        <td> <%= tempStudent.getEmail()%></td>
+                        <td> ${tempStudent.firstName}</td>
+                        <td> ${tempStudent.lastName}</td>
+                        <td> ${tempStudent.email}</td>
                     </tr>
 
+                </c:forEach>
 
-                <% } %>
+
+
 
             </table>
         </div>
